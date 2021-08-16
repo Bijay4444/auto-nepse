@@ -28,6 +28,10 @@ def main():
     df["Ratios Summary"] = df["Ratios Summary"].replace(
         {"Strong": 1, "Medium": 0, "Weak": -1}
     )
+
+    df["Symbol"] = df["Symbol"].apply(
+        lambda symbol: f"[{symbol}](https://www.nepsealpha.com/stocks/{symbol}/info)"
+    )
     df = df.sort_values(
         by=["Undervalued", "Ratios Summary", "LTP", "Bonus"],
         ascending=[False, False, True, False],
